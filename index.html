@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HAIL SAURON!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+            background: url(https://media.giphy.com/media/f3Fq267SERQm4/giphy.gif) left center;
+            background-size: cover;
+        }
+
+        #timer span {
+            font-size: 5em;
+            font-family: 'Arial', sans-serif;
+            background: rgba(255, 215, 181, 0.73);
+            width: 2em;
+            display: inline-block;
+            text-align: center;
+            line-height: 2em;
+            margin: 0 .1em;
+            border-radius: .1em;
+            color: #0e0808;
+        }
+
+        div#timer > span > span {
+            font-size: 1rem;
+            line-height: 1em;
+            display: block;
+            text-align: center;
+            width: 99%;
+            line-height: 2em;
+            background: none;
+        }
+
+        @media (max-width:711px) {
+            #timer span {
+                font-size: 2em;
+            }
+
+            body {
+                background-position: -344px center;
+            }
+
+            #timer span span {
+                font-size: .75rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+        
+        HERE FELLAS HAVE A
+
+        88                                     88                          
+        88                       ,d            88                          
+        88                       88            88                          
+        88,dPPYba,   ,adPPYba, MM88MMM ,adPPYb,88  ,adPPYba,   ,adPPYb,d8  
+        88P'    "8a a8"     "8a  88   a8"    `Y88 a8"     "8a a8"    `Y88  
+        88       88 8b       d8  88   8b       88 8b       d8 8b       88  
+        88       88 "8a,   ,a8"  88,  "8a,   ,d88 "8a,   ,a8" "8a,   ,d88  
+        88       88  `"YbbdP"'   "Y888 `"8bbdP"Y8  `"YbbdP"'   `"YbbdP"Y8  
+                                                              aa,    ,88  
+                                                               "Y8bbdP"   
+
+    -->
+
+    <div id="timer"></div>
+
+<script>
+    // Set the date we're counting down to
+    const   timerElement = document.getElementById("timer"),
+            countDownDate = new Date("May 4, 2018 12:00:00").getTime()
+
+    // Update the count down every 1 second
+    let x = setInterval(function () {
+
+        // Get todays date and time
+        let now = new Date().getTime();
+
+        // Find the distance between now an the count down date
+        let distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="demo"
+        timerElement.innerHTML = `<span class="days">${days}<span>Days</span></span><span class="hours">${hours}<span>Hours</span></span><span class="minutes">${minutes}<span>Minutes</span></span><span class="seconds">${seconds}<span>Seconds</span></span>`;
+
+        // If the count down is finished, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            timerElement.innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+    
+</body>
+</html>
